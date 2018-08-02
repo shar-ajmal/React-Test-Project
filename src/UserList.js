@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const UserList = function (props) {
-    console.log(props.users);
-    const users = props.users;
-    const userList = users.map((user) => {
-        return (
-            <div>
-                <li>{user.name}</li>
-                <li>{user.email}</li>
-                <li>{user.hobby}</li>
-            </div>
-        )
-    })
-    return userList;
+import UserListItem from './UserListItem';
+
+class UserList extends React.Component {
+    deleteItem(id) {
+        this.props.onDelete(id);
+        console.log('We are deleting element with id ' + id);
+    }
+
+     render() {
+        let userList = this.props.users.map((user) => {
+            return (
+                <div>
+                    <UserListItem item={user}/>
+                    <button type="button" onClick={() => this.deleteItem(user.id)}>X</button>
+                </div>
+            );
+        });
+        console.log(userList);
+        return userList;
+    }
 }
 
 export default UserList;

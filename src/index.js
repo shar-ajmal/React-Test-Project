@@ -7,9 +7,13 @@ import UserList from './UserList';
 class InfoForm extends React.Component {
     constructor(props) {
         super(props);
+        this.id_counter = 0;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+
         this.state = {
+            id: null,
             name: null,
             email: null,
             hobby: null,
@@ -23,20 +27,31 @@ class InfoForm extends React.Component {
     }
 
     handleSubmit(e) {
-        this.state.userList.push({
+        let user = {
+            id: (this.id_counter++),
             name: this.state.name,
             email: this.state.email,
             hobby: this.state.hobby,
-        });
+        };
+
+        this.state.userList.push(user);
 
         this.setState({
             name: "",
             email: "",
             hobby: "",
         })
-        
+
         e.preventDefault()
         e.target.reset();
+    }
+
+    handleDelete(id) {
+        let users = this.state.userList;
+        let index = users.findIndex(user =>  user.id === id);
+        console.log("this id is at index " + index);
+        users.splice(index, 1);
+        this.setState({userList: users});
     }
 
     render() {
@@ -53,7 +68,7 @@ class InfoForm extends React.Component {
                 <p>Hobby: {this.state.hobby}</p>
                 <div>
                     <h2>List of Users</h2>
-                    <UserList users={this.state.userList}/>
+                    <UserList users={this.state.userList} onDelete={this.handleDelete}/>
                 </div>
             </form>
         );
