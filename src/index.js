@@ -3,30 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Input from './Input';
 import UserList from './UserList';
-/*function Input(props) {
-    return (
-        <div>
-            <label>{props.type}:</label>
-            <input type="text" id={props.type} onChange={(e) => {props.onChange(e, props.type)}}/>
-        </div>
-    );
-}
 
-function UserList(props) {
-    console.log(props.users);
-    const users = props.users;
-    const userList = users.map((user) => {
-        return (
-            <div>
-                <li>{user.name}</li>
-                <li>{user.email}</li>
-                <li>{user.hobby}</li>
-            </div>
-        )
-    })
-    return userList;
-}
-*/
 class InfoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -57,10 +34,7 @@ class InfoForm extends React.Component {
             email: "",
             hobby: "",
         })
-        console.log("Submitted User")
-        console.log(this.state.userList);
-
-        //this.updateList();
+        
         e.preventDefault()
         e.target.reset();
     }
