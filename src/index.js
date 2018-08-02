@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Input(props) {
+import Input from './Input';
+import UserList from './UserList';
+/*function Input(props) {
     return (
         <div>
             <label>{props.type}:</label>
@@ -24,7 +26,7 @@ function UserList(props) {
     })
     return userList;
 }
-
+*/
 class InfoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -42,7 +44,7 @@ class InfoForm extends React.Component {
     handleChange(event, messageType) {
         this.setState({[messageType]: event.target.value});
     }
-    
+
     handleSubmit(e) {
         this.state.userList.push({
             name: this.state.name,
