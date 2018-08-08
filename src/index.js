@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Input from './Input';
-import UserList from './UserList';
+import Input from './components//Input';
+import UserList from './components/UserList';
 
 class InfoForm extends React.Component {
     constructor(props) {
@@ -75,7 +75,9 @@ class InfoForm extends React.Component {
     }
 }
 
-ReactDOM.render(
+/*ReactDOM.render(
     <InfoForm/>,
     document.getElementById('root')
-);
+);*/
+
+export default InfoForm;
